@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="MY_SPACE CRM" />
+    <meta name="keywords" content="MY_SPACE CRM" />
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static 'images/logo.svg'%}" />
+    <title>Register | MY_SPACE CRM</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/ base.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/user_join.css' %}"
+    />
+  </head>
+  <body class="EP-1" id="pageTop" data-spy="scroll" data-target="#mainNav">
+    <!--======================== Nav-Section ================================-->
+    <div id="register">
+      <div class="container-fluidd">
+        <div class="register-intro">
+          <div class="row">
+            <div class="col-md-4" id="main_bg">
+              <img
+                id="register_logo"
+                src="{% static 'images/logo.svg'%}"
+                class="img-fluid"
+                alt="image"
+              />
+              <h1>Lorem Ipsum</h1>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <img
+                id="register_img"
+                src="{% static 'images/home-integration-illustration.webp'%}"
+                class="img-fluid"
+                alt="image"
+              />
+            </div>
+            <!-- End col-4 -->
+
+            <div class="col-md-8">
+              <h2>Join My Space</h2>
+              <div class="mt-4" id="join_sec">
+                <div class="d-flex justify-content-center links">
+                  <h6>Don't have an account?</h6>
+                  <a href="{% url 'login' %}" class="ml-2"
+                    ><span>Login</span></a
+                  >
+                </div>
+                <!-- End links -->
+              </div>
+              <!-- End join_sec -->
+              <img
+                id="line"
+                src="{% static 'images/line.png'%}"
+                class="d-flex mx-auto"
+                alt=""
+              />
+              <form method="POST" action="" id="register_form">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="exampleUsername1">
+                    Username
+                    <mute class="text-muted"
+                      >(only letters, numbers, and underscores)</mute
+                    >
+                  </label>
+                  <br />
+                  {{form.username}}
+                </div>
+                <!-- End form-group -->
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Email</label>
+                  <br />
+                  {{form.email}}
+                </div>
+                <!-- End form-group -->
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">
+                    Password
+                    <mute class="text-muted">(min. 8 char)</mute>
+                  </label>
+                  <br />
+                  {{form.password1}}
+                </div>
+                <!-- End form-group -->
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Confirm Password</label>
+                  <br />
+                  {{form.password2}}
+                </div>
+                <!-- End form-group -->
+
+                <input
+                  class="btn register_btn btn-lg"
+                  type="submit"
+                  value="Register Account"
+                />
+                <br />
+
+                {{form.errors}}
+              </form>
+              <!-- End form -->
+            </div>
+            <!-- End col-8 -->
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End register-intro -->
+      </div>
+      <!-- End container-fluid -->
+    </div>
+    <!-- End register -->
+    <!--=============================================== JavaScript ===================================-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="{% static '/js/user_join.js' %}"></script>
+  </body>
+</html>

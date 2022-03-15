@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="MENDY VENTURES: Providing solutions 
+    for growing Communities"
+    />
+    <meta name="keywords" content="MENDY VENTURES" />
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static 'images/logo.svg'%}" />
+    <title>Update Page | MY_SPACE CRM</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/ base.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/user_profile.css' %}"
+    />
+  </head>
+  <body class="EP-1" id="pageTop" data-spy="scroll" data-target="#mainNav">
+    <!--======================== Nav-Section ================================-->
+    {% include 'accounts/user_navbar.html' %}
+    <!--  -->
+
+    <!--======================== Account-Banner ================================-->
+    <div id="update_banner"></div>
+    <!-- banner -->
+
+    <!--======================== Update-Section ================================-->
+    <div id="account">
+      <div class="container-fluid">
+        <div class="account-intro">
+          <img
+            id="profile_img"
+            src="{{request.user.person.profile_picture.url}}"
+            class="img-fluid rounded-circle"
+            alt="image"
+          />
+
+          <h5 id="update_header">
+            {{user}}! You can start Updating your Deal now🖊
+          </h5>
+          <div class="row" id="text_row">
+            <div class="col-md-4 align-self-center" id="col_one">
+              <div class="grid__item color-9">
+                <a class="link link--ilin" href="{% url 'user' %}">
+                  <span>Back To</span> <span>Profile</span></a
+                >
+              </div>
+              <!-- End grid__item -->
+            </div>
+            <!-- col -->
+
+            <div class="col-md-6" id="col_two">
+              <form method="POST" action="">
+                {% csrf_token %}
+                <!--  -->
+                <div class="form-group">
+                  <label for="exampleFull_Name">Deal Name</label>
+                  <br />
+                  {{formset.deal_name}}
+                </div>
+                <!-- End form-group -->
+
+                <div class="form-group">
+                  <label for="exampleAmount">Deal Amount</label>
+                  <br />
+                  {{formset.amount}}
+                </div>
+                <!-- End form-group -->
+
+                <div class="form-group">
+                  <label for="exampleCurrency">Currency Name</label>
+                  <br />
+                  {{formset.currency_name}}
+                </div>
+                <!-- End form-group -->
+
+                <div class="form-group">
+                  <label for="exampleDate">Closing Date</label>
+                  <br />
+                  {{formset.closing_date}}
+                </div>
+                <!-- End form-group -->
+
+                <div class="form-group">
+                  <label for="exampleUsername">Account Username</label>
+                  <br />
+                  {{formset.contact_name}}
+                </div>
+                <!-- End form-group -->
+
+                <input
+                  class="btn edit_btn btn-lg"
+                  type="submit"
+                  value="Update Deal"
+                />
+                <br />
+
+                {{form.errors}}
+              </form>
+              <!-- form -->
+            </div>
+            <!-- col -->
+          </div>
+          <!-- text_row -->
+        </div>
+        <!-- account-intro -->
+      </div>
+      <!-- container-fluid -->
+    </div>
+    <!-- account -->
+
+    <hr />
+    <footer>&copy; the_desiinger -- 2022</footer>
+    <!--=============================================== JavaScript ===================================-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- Custom Script -->
+    <script src="% static '/js/jquery-3.2.1.js' %}"></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/popper.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/user_profile.js' %}"></script>
+  </body>
+</html>

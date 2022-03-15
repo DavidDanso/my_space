@@ -1,0 +1,677 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="MENDY VENTURES: Providing solutions 
+    for growing Communities"
+    />
+    <meta name="keywords" content="MENDY VENTURES" />
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static 'images/logo.svg'%}" />
+    <title>User Feed | MY_SPACE CRM</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/ base.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/user_profile.css' %}"
+    />
+  </head>
+  <body class="EP-1" id="pageTop" data-spy="scroll" data-target="#mainNav">
+    <!--======================== Nav-Section ================================-->
+    {% include 'accounts/user_navbar.html' %}
+    <!--  -->
+
+    <!--======================================= Welcome-Section ===============================================-->
+    <div id="mini_nav">
+      <div class="container-fluid">
+        <div class="mini_nav-intro">
+          <h3>
+            <img id="dashboard_img" src="{% static 'images/dashboard.png' %}" />
+            Hello! {{request.user}}
+            <span style="float: right">
+              <img
+                id="email_img"
+                src="{% static 'images/email-marketing.png' %}"
+                alt=""
+              />
+              {{request.user.email}}
+            </span>
+          </h3>
+        </div>
+        <!-- End mini_nav-intro -->
+      </div>
+      <!-- End container-fluid -->
+    </div>
+    <!-- End mini_nav -->
+
+    <!--======================================= Status-Section ===============================================-->
+    <div id="status">
+      <div class="container-fluid">
+        <div class="status-intro">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <h5 class="card-title">Projects</h5>
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">{{total_projects}}</h3>
+                </div>
+                <!-- End card-body -->
+              </div>
+              <!-- End card -->
+            </div>
+            <!-- End col-sm-4 -->
+
+            <div class="col-sm-4">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <h5 class="card-title">Meetings</h5>
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">{{total_meetings}}</h3>
+                </div>
+                <!-- End card-body -->
+              </div>
+              <!-- End card -->
+            </div>
+            <!-- End col-sm-4 -->
+
+            <div class="col-sm-4">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <h5 class="card-title">Deals</h5>
+                </div>
+                <div class="card-body">
+                  <h3 class="card-title">{{total_deals}}</h3>
+                </div>
+                <!-- End card-body -->
+              </div>
+              <!-- End card -->
+            </div>
+            <!-- End col-sm-4 -->
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End status-intro -->
+      </div>
+      <!-- End container-fluid -->
+    </div>
+    <!-- End status -->
+
+    <!--======================================= Project-Sections ===============================================-->
+    <div class="sections" id="projects">
+      <div class="container-fluid">
+        <div class="sections-intro">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card card-body">
+                <h2>
+                  My Projects
+                  <a
+                    href="#createProjects"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >
+                    <img
+                      id="add"
+                      src="{% static 'images/plus.png' %}"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </a>
+                </h2>
+                <div class="details">
+                  {% if reverse_project %}
+                  <table class="table table-sm">
+                    <tr class="row_header">
+                      <th><span>|</span> Title</th>
+                      <th><span>|</span> Due Date</th>
+                      <th><span>|</span> Status</th>
+                      <th><span>|</span> Priority</th>
+                      <th><span>|</span> Update</th>
+                      <th><span>|</span> Delete</th>
+                    </tr>
+
+                    {% for project in reverse_project %}
+                    <tr>
+                      <td class="color" id="text_br">{{project.title}}</td>
+                      <td>{{project.due_date}}</td>
+                      <td>{{project.status}}</td>
+                      <td class="color">{{project.priority}}</td>
+                      <td>
+                        <a
+                          class="btn update"
+                          href="{% url 'project_update' project.id %}"
+                          >Update</a
+                        >
+                      </td>
+                      <td>
+                        <a
+                          class="btn delete"
+                          href="{% url 'deleteCurrentProject' project.id %}"
+                          >Delete</a
+                        >
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+                  <!-- End table -->
+                  {% else %}
+                  <h1 class="hide_header">You currently have no Projects</h1>
+                  <p class="hide_paragraph">Create your first Project</p>
+                  <img
+                    class="d-flex mx-auto"
+                    id="hide_img"
+                    src="{% static 'images/empty-folder.png' %}"
+                    alt=""
+                  />
+                  {% endif %}
+                </div>
+                <!-- End details -->
+              </div>
+              <!-- End card -->
+            </div>
+            <!-- End Projects-col -->
+
+            <div class="col-md-4 align-self-center">
+              <img id="img" src="{% static 'images/w.svg' %}" />
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End sections-intro -->
+      </div>
+      <!-- End container-fluid -->
+    </div>
+    <!-- End projects -->
+
+    <!--======================================= Meetings-Sections ===============================================-->
+    <div id="meetings" class="sections">
+      <div class="container-fluid">
+        <div class="sections-intro">
+          <div class="row">
+            <div class="col-md-4 align-self-center">
+              <img id="meeting_img" src="{% static 'images/meetings.svg' %}" />
+            </div>
+            <!-- End col -->
+
+            <div class="col-md-8">
+              <div class="card card-body">
+                <h2>
+                  My Meetings
+                  <a
+                    href="#createMeetings"
+                    data-toggle="modal"
+                    data-target="#exampleModalMeeting"
+                  >
+                    <img
+                      id="add"
+                      src="{% static 'images/plus.png' %}"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </a>
+                </h2>
+                <div class="details">
+                  <div class="details">
+                    {% if reverse_meeting %}
+                    <table class="table table-sm">
+                      <tr class="row_header">
+                        <th><span>|</span> Title</th>
+                        <th><span>|</span> Location</th>
+                        <th><span>|</span> Date</th>
+                        <th><span>|</span> Time</th>
+                        <th><span>|</span> Update</th>
+                        <th><span>|</span> Delete</th>
+                      </tr>
+
+                      {% for meeting in reverse_meeting %}
+                      <tr>
+                        <td class="color" id="text_br">{{meeting.title}}</td>
+                        <td>{{meeting.location}}</td>
+                        <td>{{meeting.date}}</td>
+                        <td class="color">{{meeting.time}}</td>
+                        <td>
+                          <a
+                            class="btn update"
+                            href="{% url 'meeting_update' meeting.id %}"
+                            >Update</a
+                          >
+                        </td>
+                        <td>
+                          <a
+                            class="btn delete"
+                            href="{% url 'deleteCurrentMeeting' meeting.id %}"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+                    <!-- End table -->
+                    {% else %}
+                    <h1 class="hide_header">You currently have no Meetings</h1>
+                    <p class="hide_paragraph">Create your first Meeting</p>
+                    <img
+                      class="d-flex mx-auto"
+                      id="hide_img"
+                      src="{% static 'images/empty-folder.png' %}"
+                      alt=""
+                    />
+                    {% endif %}
+                  </div>
+                  <!-- End details -->
+                </div>
+                <!-- End details -->
+              </div>
+              <!-- End card -->
+            </div>
+            <!-- End Meetings-col -->
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End sections-intro -->
+      </div>
+      <!-- End container-fluid -->
+    </div>
+    <!-- End meetings -->
+
+    <!--======================================= Deals-Sections ===============================================-->
+    <div class="sections" id="deals">
+      <div class="container-fluid">
+        <div class="sections-intro">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card card-body">
+                <h2>
+                  My Deals Closing This Month
+                  <a
+                    href="#createDeals"
+                    data-toggle="modal"
+                    data-target="#exampleModalDeal"
+                  >
+                    <img
+                      id="add"
+                      src="{% static 'images/plus.png' %}"
+                      class="img-fluid"
+                      alt=""
+                    />
+                  </a>
+                </h2>
+                <div class="details">
+                  <div class="details">
+                    {% if reverse_deal %}
+                    <table class="table table-sm">
+                      <tr class="row_header">
+                        <th><span>|</span> Deal Name</th>
+                        <th><span>|</span> Amount</th>
+                        <th><span>|</span> Currency Name</th>
+                        <th><span>|</span> Closing Date</th>
+                        <th><span>|</span> Update</th>
+                        <th><span>|</span> Delete</th>
+                      </tr>
+
+                      {% for deal in reverse_deal %}
+                      <tr>
+                        <td class="color" id="text_br">{{deal.deal_name}}</td>
+                        <td>{{deal.amount}}</td>
+                        <td>{{deal.currency_name}}</td>
+                        <td class="color">{{deal.closing_date}}</td>
+                        <td>
+                          <a
+                            class="btn update"
+                            href="{% url 'deal_update' deal.id %}"
+                            >Update</a
+                          >
+                        </td>
+                        <td>
+                          <a
+                            class="btn delete"
+                            href="{% url 'deleteCurrentDeal' deal.id %}"
+                            >Delete</a
+                          >
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+                    <!-- End table -->
+                    {% else %}
+                    <h1 class="hide_header">You currently have no Deals</h1>
+                    <p class="hide_paragraph">Create your first Deal</p>
+                    <img
+                      class="d-flex mx-auto"
+                      id="hide_img"
+                      src="{% static 'images/empty-folder.png' %}"
+                      alt=""
+                    />
+                    {% endif %}
+                  </div>
+                  <!-- End details -->
+                </div>
+                <!-- End details -->
+              </div>
+              <!-- End card -->
+            </div>
+            <!-- End Deals-col -->
+
+            <div class="col-md-4 align-self-center">
+              <img id="deal_img" src="{% static 'images/h.svg' %}" />
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End sections-intro -->
+      </div>
+      <!-- End container-fluid -->
+    </div>
+    <!-- End deals -->
+
+    <!--======================================= Project-Modal ===============================================-->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <span>{{request.user}}!</span> You can start creating your
+              Projects
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <div id="circle_btn">
+                <span aria-hidden="true">&times;</span>
+              </div>
+              <!-- End circle_btn --></button
+            ><!-- End close-button -->
+          </div>
+          <!-- End modal-header -->
+          <div class="modal-body" id="project_modal">
+            <form action="" method="POST">
+              {% csrf_token %}
+              <!--  -->
+              <div class="form-group">
+                <label for="exampleTitle">Project Title</label>
+                <br />
+                {{p_form.title}}
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="exampleDate">Due Date</label>
+                <br />
+                {{p_form.due_date}}
+                <br />
+                <small class="form-text text-muted">
+                  (DATE FORMAT: MONTH DAY, YEAR)
+                </small>
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="exampleStatus">Project Status</label>
+                <br />
+                {{p_form.status}}
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="examplePriority">Project Priority</label>
+                <br />
+                {{p_form.priority}}
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="examplePriority">Account Username</label>
+                <br />
+                {{p_form.contact_name}}
+                <br />
+                <small class="form-text text-muted">
+                  (SEARCH AND SELECT YOUR ACCOUNT USERNAME)
+                </small>
+              </div>
+              <!-- End form-group -->
+
+              <input
+                class="btn submit_btn btn-primary d-flex mx-auto"
+                type="submit"
+                value="Create Project"
+              />
+            </form>
+            <!-- End form -->
+          </div>
+          <!-- End modal-body -->
+        </div>
+        <!-- End modal-content -->
+      </div>
+      <!-- End modal-dialog -->
+    </div>
+    <!-- End Modal -->
+
+    <!--======================================= Meeting-Modal ===============================================-->
+    <div
+      class="modal fade"
+      id="exampleModalMeeting"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <span>{{request.user}}!</span> You can start creating your
+              Meetings
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <div id="circle_btn">
+                <span aria-hidden="true">&times;</span>
+              </div>
+              <!-- End circle_btn --></button
+            ><!-- End close-button -->
+          </div>
+          <!-- End modal-header -->
+          <div class="modal-body" id="project_modal">
+            <form action="" method="POST">
+              {% csrf_token %}
+              <!--  -->
+              <div class="form-group">
+                <label for="exampleTitle">Meeting Title</label>
+                <br />
+                {{m_form.title}}
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="exampleLocation">Meeting Location</label>
+                <br />
+                {{m_form.location}}
+                <br />
+                <small class="form-text text-muted">
+                  (INPUT FORMAT: CITY, COUNTRY)
+                </small>
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="exampleDate">Meeting Date</label>
+                <br />
+                {{m_form.date}}
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="examplePriority">Meeting Time</label>
+                <br />
+                {{m_form.time}}
+                <br />
+                <small class="form-text text-muted">
+                  (TIME FORMAT: HOUR:MINUTES)
+                </small>
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="examplePriority">Account Username</label>
+                <br />
+                {{m_form.contact_name}}
+                <br />
+                <small class="form-text text-muted">
+                  (SEARCH AND SELECT YOUR ACCOUNT USERNAME)
+                </small>
+              </div>
+              <!-- End form-group -->
+
+              <input
+                class="btn submit_btn btn-primary d-flex mx-auto"
+                type="submit"
+                value="Create Meeting"
+              />
+            </form>
+            <!-- End form -->
+          </div>
+          <!-- End modal-body -->
+        </div>
+        <!-- End modal-content -->
+      </div>
+      <!-- End modal-dialog -->
+    </div>
+    <!-- End Modal -->
+
+    <!--======================================= Deal-Modal ===============================================-->
+    <div
+      class="modal fade"
+      id="exampleModalDeal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <span>{{request.user}}!</span> You can start creating your Deals
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <div id="circle_btn">
+                <span aria-hidden="true">&times;</span>
+              </div>
+              <!-- End circle_btn --></button
+            ><!-- End close-button -->
+          </div>
+          <!-- End modal-header -->
+          <div class="modal-body" id="project_modal">
+            <form action="" method="POST">
+              {% csrf_token %}
+              <!--  -->
+              <div class="form-group">
+                <label for="exampleName">Deal Name</label>
+                <br />
+                {{d_form.deal_name}}
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="exampleAmount">Deal Amount</label>
+                <br />
+                {{d_form.amount}}
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="exampleCurrency">Currency Name</label>
+                <br />
+                {{d_form.currency_name}}
+                <br />
+                <small class="form-text text-muted">(Eg: US DOLLAR)</small>
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="examplePriority">Closing Date</label>
+                <br />
+                {{d_form.closing_date}}
+                <br />
+                <small class="form-text text-muted">
+                  (DATE FORMAT: MONTH DAY, YEAR)
+                </small>
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="exampleUsername">Account Username</label>
+                <br />
+                {{d_form.contact_name}}
+                <br />
+                <small class="form-text text-muted">
+                  (SEARCH AND SELECT YOUR ACCOUNT USERNAME)
+                </small>
+              </div>
+              <!-- End form-group -->
+
+              <input
+                class="btn submit_btn btn-primary d-flex mx-auto"
+                type="submit"
+                value="Create Deal"
+              />
+            </form>
+            <!-- End form -->
+          </div>
+          <!-- End modal-body -->
+        </div>
+        <!-- End modal-content -->
+      </div>
+      <!-- End modal-dialog -->
+    </div>
+    <!-- End Modal -->
+
+    <hr />
+    <footer>&copy; the_desiinger -- 2022</footer>
+    <!--=============================================== JavaScript ===================================-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- Custom Script -->
+    <script src="% static '/js/jquery-3.2.1.js' %}"></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/popper.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/user_profile.js' %}"></script>
+  </body>
+</html>

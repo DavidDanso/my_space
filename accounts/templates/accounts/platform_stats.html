@@ -1,0 +1,124 @@
+{% load static %}
+<!--======================================= Status-Section ===============================================-->
+<div id="status">
+  <div class="container-fluid">
+    <div class="status-intro">
+      {% for message in messages %}
+      <div id="msg">
+        <p>{{message}}</p>
+      </div>
+      <!-- End msg -->
+      {% endfor %}
+      <h1>
+        <img
+          class="users_img img-fluid"
+          src="{% static 'images/dashboard.png' %}"
+          alt=""
+        />
+        <span>Welcome Back</span>: {{request.user}}
+      </h1>
+      <div class="d-flex bd-highlight mb-3" id="flex">
+        <div class="p-2 bd-highlight">
+          <div class="card">
+            <div class="card-header">
+              Total Users
+              <span style="float: right">[{{user_count}}]</span>
+            </div>
+            <div class="card-body">
+              <div class="box">
+                <div
+                  class="chart"
+                  data-percent="{{user_percentage}}"
+                  data-scale-color="#ffb400"
+                >
+                  <p>{{user_percentage}}%</p>
+                </div>
+              </div>
+              <!-- End box -->
+            </div>
+            <!-- End card-body -->
+            <div class="card-footer text-muted">
+              Target Users By June, {{current_year}}:
+              <span style="float: right">[{{target_users}}]</span>
+            </div>
+            <!-- End card-footer -->
+          </div>
+          <!-- End card -->
+        </div>
+        <!-- End bd-highlight -->
+
+        <div class="ml-auto p-2 bd-highlight">
+          <div class="card">
+            <div class="card-header"><h5>{{today}}</h5></div>
+          </div>
+          <!-- End card -->
+        </div>
+        <!-- End bd-highlight -->
+      </div>
+      <!-- End d-flex  -->
+    </div>
+    <!-- End status-intro -->
+  </div>
+  <!-- End container-fluid -->
+</div>
+<!-- End status -->
+
+<!--======================================= User-Data ===============================================-->
+<div id="user_data">
+  <div class="container">
+    <div class="user_data-intro">
+      <div class="row shadow p-3 mb-5 bg-white rounded">
+        <div class="col-md-4" id="col_line">
+          <div id="img_container">
+            <img id="img_icon" src="{% static 'images/layer.png' %}" alt="" />
+          </div>
+          <!-- End img_container -->
+          <div id="txt">
+            <h5>Project Total</h5>
+            <p>[{{total_projects}}]</p>
+          </div>
+          <!-- End txt -->
+        </div>
+        <!-- End col -->
+
+        <div class="col-md-4" id="col_line">
+          <div id="img_container">
+            <img
+              id="img_iconY"
+              src="{% static 'images/businessmen.png' %}"
+              alt=""
+            />
+          </div>
+          <!-- End img_container -->
+          <div id="txt">
+            <h5>Meeting Total</h5>
+            <p>[{{total_meetings}}]</p>
+          </div>
+          <!-- End txt -->
+        </div>
+        <!-- End col -->
+
+        <div class="col-md-4">
+          <div id="img_container">
+            <img
+              id="img_iconZ"
+              src="{% static 'images/24-hours.png' %}"
+              alt=""
+            />
+          </div>
+          <!-- End img_container -->
+          <div id="txt">
+            <h5>Deal Total</h5>
+            <p>[{{total_deals}}]</p>
+          </div>
+          <!-- End txt -->
+        </div>
+        <!-- End col -->
+      </div>
+      <!-- End row -->
+    </div>
+    <!-- End user_data-intro -->
+  </div>
+  <!-- End container -->
+</div>
+<!-- End user_data -->

@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="MENDY VENTURES: Providing solutions 
+    for growing Communities"
+    />
+    <meta name="keywords" content="MENDY VENTURES" />
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static 'images/logo.svg'%}" />
+    <title>Delete User | MY_SPACE CRM</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/ base.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/user_profile.css' %}"
+    />
+  </head>
+  <body class="EP-1" id="pageTop" data-spy="scroll" data-target="#mainNav">
+    <!--======================== Nav-Section ================================-->
+    {% include 'accounts/user_navbar.html' %}
+    <!--  -->
+    <div id="deleteCard">
+      <div class="container-fluid">
+        <div class="card w-50 d-flex mx-auto">
+          <div class="card-body">
+            <h5 class="card-title">
+              Are you sure you want to delete
+              <span>"{{user}}"</span>?
+            </h5>
+            <p class="card-text">Note: This action can't be undone</p>
+            <img
+              id="sad_img"
+              src="{% static 'images/sad_boy.png' %}"
+              class="img-fluid d-flex mx-auto"
+              alt="image"
+            />
+            <form action="" method="POST">
+              {% csrf_token %}
+              <center>
+                <a
+                  class="text-dark btn btn_warning"
+                  href="{% url 'user_profile' user.id %}"
+                  >No, take me back</a
+                >
+                <input
+                  class="btn delete"
+                  type="submit"
+                  value="Delete"
+                  name="Confirm"
+                />
+              </center>
+            </form>
+          </div>
+          <!-- End card-body -->
+        </div>
+        <!-- End card -->
+      </div>
+      <!-- End container-fluid -->
+    </div>
+    <!-- End deleteCard -->
+
+    <hr />
+    <footer>&copy; the_desiinger -- 2022</footer>
+    <!--=============================================== JavaScript ===================================-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- Custom Script -->
+    <script src="% static '/js/jquery-3.2.1.js' %}"></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/popper.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/user_profile.js' %}"></script>
+  </body>
+</html>

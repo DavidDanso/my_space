@@ -1,0 +1,82 @@
+{% load static %}
+<!--======================== Nav-Section ================================-->
+<nav class="navbar navbar-expand-lg fixed-top menu" id="mainNav">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}"
+      ><img id="logo" src="{% static 'images/logo.svg' %}"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="content__item">
+          <a href="#" class="link link--carme nav-link">
+            <span>Admin Dashboard</span>
+          </a>
+        </li>
+      </ul>
+      <!-- End navbar-nav -->
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="content__item">
+          <div id="search">
+            <input
+              id="input"
+              class="live-search-box"
+              placeholder="SEARCH FOR USER..."
+            />
+            <button id="button">
+              <ion-icon name="search-circle"></ion-icon>
+            </button>
+          </div>
+        </li>
+
+        <li class="content__item dropdown">
+          <a
+            class="content__item"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img
+              id="profile_pic"
+              class="img-fluid rounded-circle"
+              src="{% static 'images/admin_img.svg' %}"
+            />
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <img
+              id="dropdown_pic"
+              class="img-fluid rounded-circle d-flex mx-auto"
+              src="{% static 'images/NO.svg' %}"
+            />
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'logout' %}" id="dropdown_a">
+              <img id="logout" src="{% static 'images/logout.png' %}" />
+              Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+      <!-- End navbar-nav -->
+    </div>
+    <!-- End collapse -->
+  </div>
+  <!-- End container -->
+</nav>
+<!-- End NavBar -->

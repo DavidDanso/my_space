@@ -1,0 +1,329 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  background: #e8f0fe;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  height: 100vh;
+}
+a:hover {
+  text-decoration: none;
+  /* background: url('../fonts/AktivGroteskRg.woff2'); */
+}
+/* Fonts */
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "AktivGroteskLt";
+  src: url("../fonts/AktivGroteskLt.woff2");
+}
+@font-face {
+  font-weight: normal;
+  font-style: normal;
+  font-family: "AktivGroteskRg";
+  src: url("../fonts/AktivGroteskRg.woff2");
+}
+.EP-1 {
+  --bg-color: #edf0f4;
+  --accent-color: #697794;
+  --text-color: #313949;
+  --muted-color: #263069;
+  --white-color: #ffffff;
+  --links-color: #338cf0;
+  --header-font: "AktivGroteskRg";
+  --text-font: "AktivGroteskLt";
+}
+/***************************************** Register-Section **************************************/
+#main_bg {
+  background: url("../images/bg.webp") 50% 50% no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding: 2%;
+}
+#register_logo {
+  width: 8%;
+  margin-top: 5%;
+}
+#register_img {
+  width: 80%;
+  margin-top: 17%;
+}
+#main_bg h1 {
+  font-size: 8vh;
+  color: var(--bg-color);
+  letter-spacing: 1px;
+  text-align: center;
+  font-family: var(--header-font);
+  font-weight: bold;
+  margin-top: 30%;
+}
+#main_bg p {
+  font-size: 2.1vh;
+  color: var(--bg-color);
+  letter-spacing: 1px;
+  text-align: center;
+  font-family: var(--text-font);
+  line-height: 1.2;
+  margin-top: 1%;
+}
+.register-intro h2 {
+  font-size: 5.5vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  text-align: center;
+  font-family: var(--header-font);
+  font-weight: bold;
+  margin-top: 14%;
+}
+.register-intro h6 {
+  font-size: 1.9vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
+.register-intro a {
+  font-size: 1.8vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
+.register-intro #line {
+  width: 19%;
+  margin-bottom: 5%;
+}
+#register_form {
+  margin-left: 20%;
+}
+.register-intro label {
+  font-size: 2.1vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
+.register-intro label mute {
+  font-size: 1.9vh;
+}
+.register-intro .form-group input {
+  border: 1px solid var(--text-color);
+  background: #e8f0fe !important;
+  padding: 1%;
+  border-radius: 5px;
+  width: 80%;
+}
+.register-intro .form-group input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.register_btn {
+  background-color: #1658b3;
+  border: 1px solid #0d3c88;
+  box-shadow: inset 0 1px #1658b3, 0 5px #0d3c88;
+  text-shadow: 0 -1px 0 #0d3c88;
+  margin-bottom: 0.5rem;
+  margin-left: 30%;
+}
+.register_btn:hover,
+.register_btn:focus {
+  background-color: #004bb3;
+  border-color: #0d3c88;
+  box-shadow: inset 0 1px #1658b3, 0 5px #0d3c88;
+  text-shadow: 0 -1px 0 #0d3c88;
+  color: var(--white-color);
+}
+.register_btn:active {
+  box-shadow: inset 0 1px #1658b3, 0 1px #0d3c88;
+  text-shadow: 0 -1px 0 #0d3c88;
+}
+/***************************************** Login-Section **************************************/
+#login {
+  margin-top: 10%;
+}
+.login-intro {
+  margin: 1%;
+}
+.login-intro #logo {
+  width: 4%;
+}
+#msg {
+  background: #36a857;
+  position: absolute;
+  top: 5%;
+  left: 70%;
+  padding: 1%;
+  visibility: visible;
+}
+#msg p {
+  font-size: 1.9vh;
+  color: var(--bg-color);
+  letter-spacing: 1px;
+  text-align: center;
+  font-family: var(--text-font);
+  margin: -2% 0;
+}
+.toast-body span {
+  color: var(--text-color);
+}
+.login-intro #line {
+  width: 19%;
+  margin-bottom: 2%;
+}
+.login-intro form {
+  width: 700px;
+}
+.login-intro img {
+  width: 8%;
+  margin-bottom: 2%;
+}
+.login-intro h2 {
+  font-size: 4vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  text-align: center;
+  font-family: var(--header-font);
+  font-weight: bold;
+}
+.login-intro h6 {
+  font-size: 2.5vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  text-align: center;
+  font-family: var(--text-font);
+}
+.login-intro label {
+  font-size: 2.1vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
+.login-intro label mute {
+  font-size: 1.9vh;
+}
+.login-intro .form-group a {
+  float: right;
+  font-size: 1.7vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
+.login-intro .form-group a span {
+  border-bottom: 1px solid var(--text-color);
+}
+.input-group-text {
+  border: 1px solid var(--text-color);
+  background: #e8f0fe;
+  color: var(--text-color);
+  font-size: 1.9vh;
+}
+.login-intro .form-group input {
+  border: 1px solid var(--text-color);
+  background: #e8f0fe !important;
+  padding: 2.5%;
+  border-radius: 5px;
+}
+.login-intro .form-group input:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.btn {
+  backface-visibility: hidden;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 15px;
+  color: var(--white-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+  line-height: 1;
+  padding: 0.75rem 1.5rem;
+  text-align: center;
+  transition: 0.1s linear;
+}
+.btn:hover,
+.btn:focus {
+  outline: 0;
+}
+.btn:active {
+  transform: translateY(4px);
+}
+
+.login_btn {
+  background-color: #1658b3;
+  border: 1px solid #0d3c88;
+  box-shadow: inset 0 1px #1658b3, 0 5px #0d3c88;
+  text-shadow: 0 -1px 0 #0d3c88;
+  margin-bottom: 0.5rem;
+}
+.login_btn:hover,
+.login_btn:focus {
+  background-color: #004bb3;
+  border-color: #0d3c88;
+  box-shadow: inset 0 1px #1658b3, 0 5px #0d3c88;
+  text-shadow: 0 -1px 0 #0d3c88;
+  color: var(--white-color);
+}
+.login_btn:active {
+  box-shadow: inset 0 1px #1658b3, 0 1px #0d3c88;
+  text-shadow: 0 -1px 0 #0d3c88;
+}
+#join_sec p {
+  font-size: 1.9vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
+#join_sec a {
+  font-size: 1.8vh;
+  color: var(--text-color);
+  letter-spacing: 1px;
+  font-family: var(--text-font);
+}
+#join_sec a span {
+  border-bottom: 1px solid var(--text-color);
+}
+.field-icon {
+  float: right;
+  margin-left: -20px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+.fa-eye:before,
+.fa-eye-slash:before {
+  margin-left: -20px;
+}
+
+/***************************************** Footer-Section **************************************/
+footer {
+  margin-top: 4%;
+  text-align: center;
+}
+/********************** Extra small devices (portrait phones, less than 576px) ****************************/
+@media (max-width: 575.98px) {
+}
+/************************ Small devices (landscape phones, 576px and up) *****************************/
+@media (min-width: 576px) and (max-width: 767.98px) {
+}
+
+/***************************** Medium devices (tablets, 768px and up) ********************************/
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+
+/********************************** Large devices (desktops, 992px and up) *********************************/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+
+/************************ Extra large devices (large desktops, 1200px and up) ********************************/
+@media (min-width: 1200px) {
+}

@@ -1,0 +1,98 @@
+{% extends 'accounts/main_template.html' %} {% load static %}
+<!--  -->
+{% block content %} {% include 'accounts/platform_stats.html' %}
+<!--======================================= Home-Section ===============================================-->
+<div id="home" class="live-search-list">
+  <div class="container-fluid">
+    <div class="home-intro">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header">
+              <div id="details_header">
+                <h3>
+                  Registered User Log
+                  <small>
+                    {% if show_new_user %}
+                    <span><1 to {{user_count}}></span>
+                    {% else %}
+                    <h6 class="hide_num"></h6>
+                    {% endif %}
+                  </small>
+                </h3>
+              </div>
+              <!-- End details_header -->
+            </div>
+            <div class="card-body">
+              <div class="details">
+                <table class="table table-hover text-center table-borderless">
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Date Joined</th>
+                      <th scope="col">User Email</th>
+                    </tr>
+                  </thead>
+                  <!-- End thead -->
+                  {% for user in show_new_user %}
+                  <tbody>
+                    <tr>
+                      <th scope="row">
+                        <a href="{% url 'user_profile' user.id %}">
+                          <img
+                            id="user_pic"
+                            class="img-fluid rounded-circle"
+                            src="{{user.profile_picture.url}}"
+                            alt="image"
+                          />
+                        </a>
+                      </th>
+                      <td>
+                        <a href="{% url 'user_profile' user.id %}">
+                          @{{user.username}}
+                          <h1>{{user.username}}</h1>
+                        </a>
+                      </td>
+
+                      <td>
+                        <a href="{% url 'user_profile' user.id %}">
+                          Joined {{user.date_created|date:"M, Y" }}
+                        </a>
+                      </td>
+                      <td>
+                        <a href="{% url 'user_profile' user.id %}">
+                          {{user.email}}
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <!-- End tbody -->
+                  {% endfor %}
+                </table>
+                <!-- End table -->
+              </div>
+              <!-- End details -->
+            </div>
+            <!-- End card-body -->
+          </div>
+        </div>
+        <!-- End col -->
+
+        <div class="col-md-5">
+          <img
+            id="col_img"
+            src="{% static 'images/crmhome-banner-vertical-2x.webp' %}"
+            alt=""
+          />
+        </div>
+        <!-- End col -->
+      </div>
+      <!-- End row -->
+    </div>
+    <!-- End home-intro -->
+  </div>
+  <!-- End container-fluid -->
+</div>
+<!-- End home -->
+{% endblock %}

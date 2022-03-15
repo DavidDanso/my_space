@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="MY_SPACE CRM" />
+    <meta name="keywords" content="MY_SPACE CRM" />
+    <meta name="author" content="the_desiinger" />
+    <link rel="icon" href="{% static 'images/logo.svg'%}" />
+    <title>Login | MY_SPACE CRM</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/ base.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/user_join.css' %}"
+    />
+  </head>
+  <body class="EP-1" id="pageTop" data-spy="scroll" data-target="#mainNav">
+    <!--======================== Nav-Section ================================-->
+    <div id="login">
+      <div class="container">
+        <div class="login-intro">
+          {% for message in messages %}
+          <div id="msg">
+            <p>{{message}}</p>
+          </div>
+          <!-- End msg -->
+          {% endfor %}
+          <img
+            id="logo"
+            src="{% static 'images/handshake.svg'%}"
+            class="d-flex mx-auto"
+            alt=""
+          />
+          <h2>Login</h2>
+          <h6>Welcome back.</h6>
+          <img
+            id="line"
+            src="{% static 'images/line.png'%}"
+            class="d-flex mx-auto"
+            alt=""
+          />
+          <div id="user_card" class="d-flex justify-content-center">
+            <form action="" method="POST">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="usernane">
+                  Username
+                  <mute class="text-muted"
+                    >(only letters, numbers, and underscores)</mute
+                  >
+                </label>
+                <div class="input-group mb-2 mr-sm-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                  </div>
+                  <input name="username" type="text" class="form-control" />
+                </div>
+              </div>
+              <!-- End form-group -->
+
+              <div class="form-group">
+                <label for="password">
+                  Password
+                  <mute class="text-muted">(min. 8 char)</mute>
+                </label>
+                <a href="#"><span>Forgot Password?</span></a>
+                <input
+                  id="password-field"
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  value="enter your password"
+                />
+                <span
+                  toggle="#password-field"
+                  class="fa fa-fw fa-eye-slash field-icon toggle-password"
+                ></span>
+              </div>
+              <!-- End form-group -->
+
+              <div class="d-flex justify-content-center mt-3 login_container">
+                <input
+                  class="btn login_btn btn-lg btn-block"
+                  type="submit"
+                  value="Login"
+                />
+              </div>
+              <!-- End login_container -->
+
+              <div class="mt-4" id="join_sec">
+                <div class="d-flex justify-content-center links">
+                  <p>Don't have an account?</p>
+                  <a href="{% url 'register' %}" class="ml-2"
+                    ><span>Join</span></a
+                  >
+                </div>
+              </div>
+              <!-- End join_sec -->
+            </form>
+            <!-- End form -->
+          </div>
+          <!-- End user_card -->
+        </div>
+        <!-- End login-intro -->
+      </div>
+      <!-- End container -->
+    </div>
+    <!-- End login -->
+
+    <!--=============================================== JavaScript ===================================-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="{% static '/js/user_join.js' %}"></script>
+  </body>
+</html>

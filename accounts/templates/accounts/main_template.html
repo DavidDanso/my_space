@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="MY_SPACE CRM" />
+    <meta name="keywords" content="MY_SPACE CRM" />
+    <meta name="author" content="the_desiinger" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'images/logo.svg' %}"
+      type="image/x-icon"
+    />
+
+    <title>Admin Dasboard | MY_SPACE CRM</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static '/css/normalize.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/ base.css' %}" />
+    <link rel="stylesheet" href="{% static '/css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static '/css/style.css' %}"
+    />
+  </head>
+  <body class="EP-1" id="pageTop" data-spy="scroll" data-target="#mainNav">
+    <!--======================== Nav-Section ================================-->
+    {% include 'accounts/navbar.html' %} {% block content %} {% endblock %}
+
+    <hr />
+    <!--======================================= Footer-Section ===============================================-->
+    <footer>&copy; the_desiinger -- 2022</footer>
+    <!--=============================================== JavaScript ===================================-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- Custom Script -->
+    <script src="% static '/js/jquery-3.2.1.js' %}"></script>
+    <script src="{% static '/js/jquery-min.js' %}"></script>
+    <script src="{% static '/js/popper.min.css' %}"></script>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/easy-pie-chart/2.1.6/jquery.easypiechart.min.js"></script>
+    <script src="{% static '/js/main.js' %}"></script>
+  </body>
+</html>
